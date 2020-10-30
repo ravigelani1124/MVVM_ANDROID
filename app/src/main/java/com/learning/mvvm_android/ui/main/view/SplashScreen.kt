@@ -56,6 +56,7 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun retrieveConfiguration(configuration: ConfigurationResponseModel) {
+        binding.model=configuration
         toast(configuration.images.base_url)
 
     }

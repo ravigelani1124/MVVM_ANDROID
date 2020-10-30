@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <TextView
             android:text="@{model.images.base_url}"
             app:layout_constraintBottom_toBottomOf="parent"
             android:textColor="@color/black"
