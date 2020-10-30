@@ -14,6 +14,8 @@ import com.learning.mvvm_android.databinding.ActivitySplashScreenBinding
 import com.learning.mvvm_android.ui.base.SplashViewModelFactory
 import com.learning.mvvm_android.ui.main.viewmodel.SplashViewModel
 import com.learning.mvvm_android.util.Status
+import com.learning.mvvm_android.util.hide
+import com.learning.mvvm_android.util.show
 import com.learning.mvvm_android.util.toast
 
 class SplashScreen : AppCompatActivity() {
@@ -42,15 +44,16 @@ class SplashScreen : AppCompatActivity() {
                     when(resource.status){
 
                         Status.LOADING->{
+                            binding.pbProgress.show()
                         }
                         Status.SUCCESS->{
                             toast("Success")
+                            binding.pbProgress.hide()
                             //resource.data?.let { configuration -> retrieveConfiguration(configuration) }
-                            binding.pbProgress.visibility=View.GONE
                         }
                         Status.ERROR->{
                             toast("Error")
-                            binding.pbProgress.visibility=View.GONE
+                            binding.pbProgress.hide()
                         }
                     }
                 }
