@@ -1,4 +1,4 @@
-package com.interview.tmdb_mvc.model.configuration
+package com.learning.mvvm_android.data.model.configuration
 
 data class Images(
     val backdrop_sizes: List<String>,

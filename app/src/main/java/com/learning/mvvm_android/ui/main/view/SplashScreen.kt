@@ -44,7 +44,7 @@ class SplashScreen : AppCompatActivity() {
                         Status.SUCCESS->{
                             toast("Success")
                             binding.pbProgress.hide()
-                         //   resource.data?.let { configuration -> retrieveConfiguration(configuration) }
+                            resource.data?.let { configuration -> retrieveConfiguration(configuration) }
                         }
                         Status.ERROR->{
                             toast("Error")
