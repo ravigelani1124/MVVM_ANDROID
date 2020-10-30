@@ -1,20 +1,26 @@
 package com.learning.mvvm_android.ui.main.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
+import com.learning.mvvm_android.data.model.configuration.ConfigurationResponseModel
 import com.learning.mvvm_android.data.repository.SplashRepository
 import com.learning.mvvm_android.util.Resource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SplashViewModel(private val splashRepository: SplashRepository) : ViewModel() {
+    val liveData = MutableLiveData<Resource<ConfigurationResponseModel>>()
 
-
-    fun getConfiguration(id :String) = liveData(Dispatchers.IO) {
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = splashRepository.configuration(id)))
-        } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+    fun getConfiguration(id :String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            liveData.postValue(Resource.loading(data = null))
+            try {
+                val response = Resource.success(data = splashRepository.configuration(id))
+                liveData.postValue(response)
+            } catch (exception: Exception) {
+                liveData.postValue(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            }
         }
     }
 }

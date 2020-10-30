@@ -1,8 +1,9 @@
 package com.learning.mvvm_android.ui.main.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.observe
 import com.learning.mvvm_android.R
 import com.learning.mvvm_android.data.model.configuration.ConfigurationResponseModel
 import com.learning.mvvm_android.databinding.ActivitySplashScreenBinding
@@ -32,32 +33,32 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        splashViewModel.getConfiguration(resources.getString(R.string.api_key)).observe(this,
-            {
-                it?.let {
-                    resource ->
-                    when(resource.status){
-
-                        Status.LOADING->{
-                            binding.pbProgress.show()
-                        }
-                        Status.SUCCESS->{
-                            toast("Success")
-                            binding.pbProgress.hide()
-                            resource.data?.let { configuration -> retrieveConfiguration(configuration) }
-                        }
-                        Status.ERROR->{
-                            toast("Error")
-                            binding.pbProgress.hide()
-                        }
+        splashViewModel.liveData.observe(this) {
+            it?.let { resource ->
+                when(resource.status){
+                    Status.LOADING->{
+                        binding.pbProgress.show()
+                    }
+                    Status.SUCCESS->{
+                        toast("Success")
+                        binding.pbProgress.hide()
+                        binding.model = resource.data
+                        resource.data?.let { configuration -> retrieveConfiguration(configuration) }
+                    }
+                    Status.ERROR->{
+                        toast("Error")
+                        binding.pbProgress.hide()
                     }
                 }
-            })
+            }
+        }
+        if(splashViewModel.liveData.value == null){
+            splashViewModel.getConfiguration(resources.getString(R.string.api_key))
+        }
     }
 
     private fun retrieveConfiguration(configuration: ConfigurationResponseModel) {
         binding.model=configuration
         toast(configuration.images.base_url)
-
     }
 }
