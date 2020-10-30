@@ -1,6 +1,5 @@
 package com.learning.mvvm_android.di
 
-import com.learning.mvvm_android.data.api.ApiHelper
 import com.learning.mvvm_android.data.repository.SplashRepository
 import com.learning.mvvm_android.ui.main.viewmodel.SplashViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -11,6 +10,6 @@ internal val splash_module = module {
     viewModel { SplashViewModel(get()) }
 
     factory {
-        SplashRepository(ApiHelper(get()))
+        SplashRepository(get())
     }
 }

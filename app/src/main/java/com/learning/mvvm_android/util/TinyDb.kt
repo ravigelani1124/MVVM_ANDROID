@@ -69,4 +69,6 @@ class TinyDb {
 
         sharedpreferences!!.edit().clear().apply()
     }
+
+
 }

@@ -1,14 +1,9 @@
 package com.learning.mvvm_android.di
 
 import com.learning.mvvm_android.BuildConfig
-import com.learning.mvvm_android.data.api.ApiHelper
 import com.learning.mvvm_android.data.api.ApiService
-import com.learning.mvvm_android.ui.main.viewmodel.HomeScreenViewModel
-import com.learning.mvvm_android.ui.main.viewmodel.SplashViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.androidx.viewmodel.compat.ViewModelCompat.viewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,10 +38,6 @@ import java.util.concurrent.TimeUnit
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
-
-    factory {
-        ApiHelper(get())
     }
 
     single {
