@@ -1,4 +1,4 @@
-package com.interview.tmdb_mvc.model.movie
+package com.learning.mvvm_android.data.model.movie
 
 import com.learning.mvvm_android.data.model.movie.MovieResult
 
