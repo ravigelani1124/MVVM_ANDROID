@@ -3,34 +3,32 @@ package com.learning.mvvm_android.ui.main.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
 import com.learning.mvvm_android.R
-import com.learning.mvvm_android.data.api.ApiHelper
-import com.learning.mvvm_android.data.api.RetrofitBuilder
 import com.learning.mvvm_android.data.model.configuration.ConfigurationResponseModel
 import com.learning.mvvm_android.databinding.ActivitySplashScreenBinding
-import com.learning.mvvm_android.ui.base.ViewModelFactory
+import com.learning.mvvm_android.di.splash_module
 import com.learning.mvvm_android.ui.main.viewmodel.SplashViewModel
 import com.learning.mvvm_android.util.Status
 import com.learning.mvvm_android.util.hide
 import com.learning.mvvm_android.util.show
 import com.learning.mvvm_android.util.toast
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class SplashScreen : AppCompatActivity() {
 
-    private lateinit var splashViewModel: SplashViewModel
+    private val splashViewModel: SplashViewModel by viewModel()
     private lateinit var binding: ActivitySplashScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        loadKoinModules(splash_module)
         setupViewModel()
         setupObservers()
     }
 
     private fun setupViewModel() {
         binding=DataBindingUtil.setContentView(this,R.layout.activity_splash_screen)
-        splashViewModel= ViewModelProviders.of(this,ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)))
-            .get(SplashViewModel::class.java)
     }
 
     private fun setupObservers() {
@@ -46,7 +44,7 @@ class SplashScreen : AppCompatActivity() {
                         Status.SUCCESS->{
                             toast("Success")
                             binding.pbProgress.hide()
-                            //resource.data?.let { configuration -> retrieveConfiguration(configuration) }
+                         //   resource.data?.let { configuration -> retrieveConfiguration(configuration) }
                         }
                         Status.ERROR->{
                             toast("Error")
@@ -59,5 +57,6 @@ class SplashScreen : AppCompatActivity() {
 
     private fun retrieveConfiguration(configuration: ConfigurationResponseModel) {
         toast(configuration.images.base_url)
+
     }
 }

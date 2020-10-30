@@ -16,8 +16,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'API_BASE_URL', '"https://api.themoviedb.org/"'
     }
 
     buildTypes {
@@ -64,12 +64,29 @@ dependencies {
     //Kotlin Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"
-    
+
     //Android Room
     implementation "androidx.room:room-runtime:2.2.5"
     implementation "androidx.room:room-ktx:2.2.5"
     kapt "androidx.room:room-compiler:2.2.5"
 
-
     implementation "androidx.preference:preference-ktx:1.1.1"
+
+    // Koin for Kotlin
+    implementation "org.koin:koin-core:$koin_version"
+
+// Koin Extended & experimental features
+    implementation "org.koin:koin-core-ext:$koin_version"
+
+// Koin for Unit tests
+    testImplementation "org.koin:koin-test:$koin_version"
+
+    // Koin for Android
+    implementation "org.koin:koin-android:$koin_version"
+
+// Koin AndroidX Scope feature
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+
+// Koin AndroidX ViewModel feature
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 }

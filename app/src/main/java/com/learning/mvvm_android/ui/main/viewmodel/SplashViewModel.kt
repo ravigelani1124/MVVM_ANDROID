@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 
 class SplashViewModel(private val splashRepository: SplashRepository) : ViewModel() {
 
+
     fun getConfiguration(id :String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
         try {
