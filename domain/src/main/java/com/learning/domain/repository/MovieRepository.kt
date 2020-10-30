@@ -1,8 +1,8 @@
 package com.learning.domain.repository
 
-import com.learning.domain.model.Movie
+import com.learning.domain.model.PopularMoviesResult
 
-interface MovieRepository  {
+interface MovieRepository {
 
-    fun getPopularMovies():List<Movie>
+    suspend fun getPopularMovies(): PopularMoviesResult
 }
