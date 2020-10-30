@@ -2,16 +2,14 @@ package com.learning.mvvm_android.ui.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.google.gson.JsonObject
 import com.learning.mvvm_android.R
 import com.learning.mvvm_android.data.api.ApiHelper
 import com.learning.mvvm_android.data.api.RetrofitBuilder
 import com.learning.mvvm_android.data.model.configuration.ConfigurationResponseModel
 import com.learning.mvvm_android.databinding.ActivitySplashScreenBinding
-import com.learning.mvvm_android.ui.base.SplashViewModelFactory
+import com.learning.mvvm_android.ui.base.ViewModelFactory
 import com.learning.mvvm_android.ui.main.viewmodel.SplashViewModel
 import com.learning.mvvm_android.util.Status
 import com.learning.mvvm_android.util.hide
@@ -25,14 +23,13 @@ class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setupViewModel()
         setupObservers()
     }
 
     private fun setupViewModel() {
         binding=DataBindingUtil.setContentView(this,R.layout.activity_splash_screen)
-        splashViewModel= ViewModelProviders.of(this,SplashViewModelFactory(ApiHelper(RetrofitBuilder.apiService)))
+        splashViewModel= ViewModelProviders.of(this,ViewModelFactory(ApiHelper(RetrofitBuilder.apiService)))
             .get(SplashViewModel::class.java)
     }
 
