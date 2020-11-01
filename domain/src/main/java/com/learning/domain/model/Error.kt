@@ -1,6 +1,7 @@
 package com.learning.domain.model
 
-data class Error (
-    val statusCode:String?,
-    val message:String?
+data class Error(
+
+    val statusCode: Int?,
+    val message: String?
 )

@@ -1,12 +1,14 @@
 package com.learning.data.repository
 
 import com.google.gson.Gson
+import com.learning.data.model.ErrorData
 import com.learning.data.model.map
 import com.learning.data.service.MovieService
 import com.learning.domain.model.Error
 import com.learning.domain.model.PopularMoviesResult
 import com.learning.domain.repository.MovieRepository
 import org.json.JSONObject
+
 
 internal class MovieRepositoryImpl(private val movieService: MovieService) : MovieRepository {
 
@@ -26,15 +28,17 @@ internal class MovieRepositoryImpl(private val movieService: MovieService) : Mov
             }
 
             401 -> {
-                val error = Gson().fromJson(
-                    JSONObject(response.errorBody().toString()).toString(),
-                    Error::class.java)
-                PopularMoviesResult.UnAuthorised(error)
+
+                val errorData =
+                    Gson().fromJson(response.errorBody()!!.charStream(), ErrorData::class.java)
+                PopularMoviesResult.UnAuthorised(errorData.map())
             }
             404 -> {
+
                 val error = Gson().fromJson(
                     JSONObject(response.errorBody().toString()).toString(),
-                    Error::class.java)
+                    Error::class.java
+                )
                 PopularMoviesResult.UnAuthorised(error)
             }
             else -> {

@@ -2,6 +2,7 @@ package com.learning.data.repository
 
 import MockWebServerUtils
 import com.learning.data.service.MovieService
+import com.learning.domain.model.Error
 import com.learning.domain.model.Movie
 import com.learning.domain.model.PopularMoviesResult
 import com.learning.domain.repository.MovieRepository
@@ -17,6 +18,8 @@ internal class MovieRepositoryTest {
 
     private lateinit var movieRepository: MovieRepository
     private var mockWebServer = MockWebServer()
+
+    private val error = Error(7, "Invalid API key: You must be granted a valid key.")
     private val movies = listOf(
         Movie(
             adult = false,
@@ -75,6 +78,15 @@ internal class MovieRepositoryTest {
         }
     }
 
+
+    @Test
+    fun `when 401 then returns PopularMovieResult failure`() {
+        runBlocking {
+            mockHttpResponse("popular-movies-failure.json", 401)
+            val result = movieRepository.getPopularMovies()
+            Assert.assertEquals(PopularMoviesResult.UnAuthorised(error), result)
+        }
+    }
 
     private fun mockHttpResponse(fileName: String? = null, responseCode: Int? = null) {
         return mockWebServer.enqueue(
