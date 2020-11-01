@@ -1,0 +1,47 @@
+{
+  "page": 3,
+  "total_results": 10000,
+  "total_pages": 500,
+  "results": [
+    {
+      "popularity": 357.955,
+      "vote_count": 76,
+      "video": false,
+      "poster_path": "\/w6e0XZreiyW4mGlLRHEG8ipff7b.jpg",
+      "id": 722603,
+      "adult": false,
+      "backdrop_path": "\/m7QpUAeI2xTCJyAVl9J9z5dBTSb.jpg",
+      "original_language": "en",
+      "original_title": "Battlefield 2025",
+      "genre_ids": [
+        28,
+        27,
+        878
+      ],
+      "title": "Battlefield 2025",
+      "vote_average": 5.7,
+      "overview": "Weekend campers, an escaped convict, young lovers and a police officer experience a night of terror when a hostile visitor from another world descends on a small Arizona town.",
+      "release_date": "2020-07-07"
+    },
+    {
+      "popularity": 322.048,
+      "vote_count": 96,
+      "video": false,
+      "poster_path": "\/ltyARDw2EFXZ2H2ERnlEctXPioP.jpg",
+      "id": 425001,
+      "adult": false,
+      "backdrop_path": "\/4gKyQ1McHa8ZKDsYoyKQSevF01J.jpg",
+      "original_language": "en",
+      "original_title": "The War with Grandpa",
+      "genre_ids": [
+        35,
+        10751,
+        18
+      ],
+      "title": "The War with Grandpa",
+      "vote_average": 6.2,
+      "overview": "Sixth-grader Peter is pretty much your average kid—he likes gaming, hanging with his friends and his beloved pair of Air Jordans. But when his recently widowed grandfather Ed  moves in with Peter’s family, the boy is forced to give up his most prized possession of all, his bedroom. Unwilling to let such an injustice stand, Peter devises a series of increasingly elaborate pranks to drive out the interloper, but Grandpa Ed won’t go without a fight.",
+      "release_date": "2020-08-27"
+    }
+  ]
+}

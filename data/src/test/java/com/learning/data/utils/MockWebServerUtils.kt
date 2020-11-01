@@ -1,3 +1,6 @@
+import okhttp3.mockwebserver.MockResponse
+import java.io.File
+
 object MockWebServerUtils {
     /**
      * Mock server response so we can isolate testing our API calls.
