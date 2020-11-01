@@ -11,7 +11,7 @@ import org.json.JSONObject
 internal class MovieRepositoryImpl(private val movieService: MovieService) : MovieRepository {
 
     override suspend fun getPopularMovies(): PopularMoviesResult {
-        val response = movieService.getPopularMovieList("f05c3b8d922103b63e4eea496cf3d1f7", 1)
+        val response = movieService.getPopularMovieList("f05c3b8d922103b63e4eea496cf3d1f7", 3)
         return when (response.code()) {
 
             200 -> {

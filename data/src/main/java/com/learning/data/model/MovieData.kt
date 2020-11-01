@@ -3,7 +3,7 @@ package com.learning.data.model
 import com.google.gson.annotations.SerializedName
 import com.learning.domain.model.Movie
 
-internal data class MovieData (
+internal data class MovieData(
     @SerializedName("adult")
     val adult: Boolean?,
     @SerializedName("backdrop_path")
@@ -20,17 +20,17 @@ internal data class MovieData (
     val overview: String?,
     @SerializedName("popularity")
     val popularity: Double?,
-    @SerializedName("posterPath")
+    @SerializedName("poster_path")
     val posterPath: String?,
-    @SerializedName("releaseDate")
+    @SerializedName("release_date")
     val releaseDate: String?,
     @SerializedName("title")
     val title: String?,
     @SerializedName("video")
     val video: Boolean?,
-    @SerializedName("voteAverage")
+    @SerializedName("vote_average")
     val voteAverage: Double?,
-    @SerializedName("voteCount")
+    @SerializedName("vote_count")
     val voteCount: Int?
 )
 
